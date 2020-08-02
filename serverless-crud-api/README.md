@@ -25,7 +25,7 @@ This quick start uses the following AWS services to deploy the CRUD API:
 - Functions: Lambda
 - Privileges: IAM
 
-![CRUD-API-Diagram]()
+![CRUD-API-Diagram](https://github.com/ktptran/ktptran-aws-quick-starts/blob/rest-api/serverless-crud-api/Diagram.png)
 
 ### CloudFormation
 
