@@ -10,10 +10,9 @@ language: Python
 # Serverless CRUD API
 This quick start deploys a [CRUD API](https://rapidapi.com/blog/api-glossary/crud/) where you can create, read, update, delete, and list objects stored in a todos table. DynamoDB is used to store the data through AWS.
 
-This service has a src directory for all the CRUD API functions deployed through Lambda. For each operation exactly one file exists e.g. `src/update.py`. In each of these files, the function validates the input and
-sends back a response based on the request.
+This service has a src directory for all the CRUD API functions deployed through Lambda. For each operation exactly one file exists e.g. `src/update.py`. In each of these files, the function validates the input and sends back a response based on the request.
 
-This quick start is based on serverless framework's REST API [Serverless REST API with DynamoDB Tutorial](https://github.com/serverless/examples/tree/master/aws-python-rest-api-with-dynamodb).
+This quick start is based on serverless framework's [Serverless REST API with DynamoDB Tutorial](https://github.com/serverless/examples/tree/master/aws-python-rest-api-with-dynamodb).
 
 ## AWS Services
 
