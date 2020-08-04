@@ -1,0 +1,10 @@
+[
+  {
+    "ParameterKey": "NumberOfPrivateSubnets",
+    "ParameterValue": "0"
+  },
+  {
+    "ParameterKey": "NumberOfPublicSubnets",
+    "ParameterValue": "1"
+  }
+]
