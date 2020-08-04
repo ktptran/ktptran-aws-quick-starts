@@ -84,6 +84,7 @@ In total, VPCs contain these components:
 Subnets break down the VPC further by separating it into different compartments / availability zones for you to provision your resources in. Subnets can only be accessed through routes you configure in a route table. To further secure your subnets, you can assign them network access control lists which are stateless resources that allow certain ports to connect to your subnet.
 
 _Why would I want subnets?_
+
 Suppose you have a frontend website and a backend database. Only your website needs to communicate with the database but nothing else does, so if you put it in the public subnet, you are at a security risk of having your data leaked since the information is available to the whole world.
 
 ### Route Tables
