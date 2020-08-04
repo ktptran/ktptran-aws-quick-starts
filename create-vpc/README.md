@@ -1,7 +1,7 @@
 # CloudFormation VPC
 This quick start CloudFormation template provisions a VPC in your AWS environment with 1 subnet by default. Depending on the input parameters, the VPC may have 1-3 public and 0-3 private subnets with a private and public route table both configured with internet access through a NAT gateway and an internet gateway.
 
-![VPC-Picture]()
+![VPC-Picture](https://github.com/ktptran/ktptran-aws-quick-starts/blob/master/create-vpc/Create-VPC.png)
 
 Using this CloudFormation VPC template, I can provision more resources on top of the provisioned materials by using nested stacks. Nested stacks are where you use a previous CloudFormation template on another template. Some examples of what I could do next include building a public frontend EC2 instance with a private backend RDS database or setting up an AWS workspace.
 
