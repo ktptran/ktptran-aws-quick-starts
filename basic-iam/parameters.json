@@ -1,0 +1,18 @@
+[
+  {
+    "ParameterKey": "GroupName",
+    "ParameterValue": "group"
+  },
+  {
+    "ParameterKey": "UserName",
+    "ParameterValue": "user"
+  },
+  {
+    "ParameterKey": "PolicyName",
+    "ParameterValue": "policy"
+  },
+  {
+    "ParameterKey": "AttachPolicy",
+    "ParameterValue": "true"
+  }
+]

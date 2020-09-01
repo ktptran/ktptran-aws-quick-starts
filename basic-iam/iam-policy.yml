@@ -1,0 +1,73 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Deploys a number of IAM users who are attached to an IAM group with a policy to list
+  all the S3 buckets in my environment.
+Parameters:
+  GroupName:
+    Type: String
+    Default: group
+    Description: What do you want the name of the group to be?
+    MinLength: 1
+  UserName:
+    Type: String
+    Default: user
+    Description: What do you want the name of the user to be?
+    MinLength: 1
+  PolicyName:
+    Type: String
+    Default: user
+    Description: What do you want the name of the policy to be?
+    MinLength: 1
+  AttachPolicy:
+    Type: String
+    Description: Do you want to attach the policy for users to list s3 buckets?
+    AllowedValues: [true, false]
+    Default: true
+    ConstraintDescription: must specify true or false
+Conditions:
+  AttachPolicyToGroup: !Equals [ !Ref AttachPolicy, yes]
+Resources:
+  Group:
+    Type: AWS::IAM::Group
+    Properties:
+      GroupName: !Join ['', [!Ref "AWS::Region", !Ref "AWS::StackName", "-", !Ref GroupName]]
+  Policy:
+    Type: AWS::IAM::Policy
+    Condition: AttachPolicyToGroup
+    Properties:
+      PolicyName: !Join ['', [!Ref "AWS::Region", !Ref "AWS::StackName", "-", !Ref PolicyName]]
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - s3:ListAllMyBuckets
+          Resource: arn:aws:s3:::*
+      Groups:
+      - !Ref Group
+  User:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: !Join ['', [!Ref "AWS::Region", "-", !Ref "AWS::StackName", "-", !Ref UserName]]
+      LoginProfile:
+        Password: MyDefaultP@ssW0rd
+        PasswordResetRequired: true
+  AddUserToGroup:
+    Type: AWS::IAM::UserToGroupAddition
+    Properties:
+      GroupName: !Ref Group
+      Users:
+      - !Ref User
+Outputs:
+  StackName:
+    Value: !Ref AWS::StackName
+    Description: Stack name
+  Group:
+    Value: !Ref Group
+    Description: Group created
+  Policy:
+    Value: !Ref Policy
+    Condition: AttachPolicyToGroup
+    Description: Policy created
+  User:
+    Value: !Ref User
+    Description: User created
