@@ -16,41 +16,42 @@ First, ensure you have the [AWS CLI](https://aws.amazon.com/cli/) installed then
 To update the configurations for the CloudFormation template, edit the `parameters.json` file.
 
 
-Creating stack:
+*Creating stack:*
 
 ```bash
 aws cloudformation create-stack --stack-name IAM --template-body file://iam-policy.yml --capabilities CAPABILITY_NAMED_IAM --parameters file://parameters.json
 ```
 
-Waiting for the stack to complete:
+*Waiting for the stack to complete:*
 
 ```bash
 aws cloudformation wait stack-create-complete --stack-name IAM
 ```
 
 
-Describe information about your stack:
+*Describe information about your stack:*
 
 ```bash
 aws cloudformation describe-stacks
 ```
 
 
-Update Stack:
+*Update Stack:*
 
 ```
 aws cloudformation update-stack --stack-name IAM --template-body file://iam-policy.yml --capabilities CAPABILITY_NAMED_IAM --parameters file://parameters.json
 ```
 
 
-Waiting for the stack update to complete:
+*Waiting for the stack update to complete:*
 
 ```bash
 aws cloudformation wait stack-update-complete --stack-name IAM
 ```
 
 
-Deleting the stack:
+*Deleting the stack:*
+
 ```bash
 aws cloudformation delete-stack --stack-name IAM
 ```
@@ -70,6 +71,7 @@ _User_
 An IAM user is a profile used to access the AWS management console or API. IAM users start with no privileges when being created and are given a username and password for the management console and an access key id / secret access key to programmatically access the AWS environment.
 
 _Group_
+
 A group is used to group IAM users together and grant them the policy privileges attached.
 
 The best practices for policies is to distinguish your users into groups (e.g. departments such as dev, test, finance, etc.) and assign the policies to the groups. This allows you to quickly assign privileges to any new users and revoke privileges when necessary.
