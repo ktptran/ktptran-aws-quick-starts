@@ -7,7 +7,9 @@ framework: v1
 platform: AWS
 language: Python
 -->
+
 # Serverless CRUD API
+
 This quick start deploys a [CRUD API](https://rapidapi.com/blog/api-glossary/crud/) where you can create, read, update, delete, and list objects stored in a todos table. DynamoDB is used to store the data through AWS.
 
 This service has a src directory for all the CRUD API functions deployed through Lambda. For each operation exactly one file exists e.g. `src/update.py`. In each of these files, the function validates the input and sends back a response based on the request.
@@ -46,9 +48,9 @@ When you create it, you state the provisioned throughput capacity you want to re
 To change the provisioned throughput, you can edit these configurations via settings in the `serverless.yml`.
 
 ```yaml
-  ProvisionedThroughput:
-    ReadCapacityUnits: 1
-    WriteCapacityUnits: 1
+ProvisionedThroughput:
+  ReadCapacityUnits: 1
+  WriteCapacityUnits: 1
 ```
 
 ### Lambda
@@ -64,12 +66,13 @@ API Gateway is a service for creating, publishing, and maintaining secure APIs a
 you provision your functions, they have an event pathway through API gateway for you to call them.
 
 Example:
+
 ```yaml
-    events:
-      - http:
-          path: /v1/todo
-          method: POST
-          cors: true
+events:
+  - http:
+      path: /v1/todo
+      method: POST
+      cors: true
 ```
 
 Using this path, you can change the endpoint API gateway provisions for you functions. CORS is short for
@@ -160,6 +163,7 @@ curl -X POST https://XXXXXXX.execute-api.us-west-2.amazonaws.com/dev/v1/todo --d
 ```
 
 Example Output:
+
 ```bash
 "{\"id\": \"7b7739c2-7cad-481b-adc1-1fc48613e326\", \"task\": \"Work on food\", \"checked\": false, \"createdAt\": \"1596407014.4433892\", \"updatedAt\": \"1596407014.4433892\"}"%
 ```
@@ -171,6 +175,7 @@ curl https://XXXXXXX.execute-api.us-west-2.amazonaws.com/dev/v1/todo
 ```
 
 Example output:
+
 ```bash
 [{"checked": true, "task": "Go on a run", "id": "bea44849-0d13-4252-977e-45cce0864c9c", "updatedAt": 1596406707680}, {"checked": false, "createdAt": "1596405816.8263454", "task": "Do homework", "id": "71aa8b21-5e75-4812-820e-46589029fdcf", "updatedAt": "1596405816.8263454"}, {"checked": false, "createdAt": "1596407014.4433892", "task": "Work on food", "id": "7b7739c2-7cad-481b-adc1-1fc48613e326", "updatedAt": "1596407014.4433892"}]%
 ```
@@ -183,6 +188,7 @@ curl https://XXXXXXX.execute-api.us-west-2.amazonaws.com/dev/v1/todo/<id>
 ```
 
 Example output:
+
 ```bash
 {"todo": {"checked": false, "createdAt": "1596405816.8263454", "task": "Do homework", "id": "71aa8b21-5e75-4812-820e-46589029fdcf", "updatedAt": "1596405816.8263454"}}%
 ```
@@ -195,6 +201,7 @@ curl -X PUT https://XXXXXXX.execute-api.us-west-2.amazonaws.com/dev/v1/todo/71aa
 ```
 
 Example output:
+
 ```bash
 {"checked": true, "createdAt": "1596405816.8263454", "task": "Learn serverless", "id": "71aa8b21-5e75-4812-820e-46589029fdcf", "updatedAt": 1596407138976}%
 ```
@@ -207,6 +214,7 @@ curl -X DELETE https://6om2glbet3.execute-api.us-west-2.amazonaws.com/dev/v1/<id
 ```
 
 Example output:
+
 ```bash
-{"todo": {"ResponseMetadata": {"RequestId": "5VBGHJQ3REQ2T7QRNMO85MHST3VV4KQNSO5AEMVJF66Q9ASUAAJG", "HTTPStatusCode": 200, "HTTPHeaders": {"server": "Server", "date": "Sun, 02 Aug 2020 22:27:14 GMT", "content-type": "application/x-amz-json-1.0", "content-length": "2", "connection": "keep-alive", "x-amzn-requestid": "5VBGHJQ3REQ2T7QRNMO85MHST3VV4KQNSO5AEMVJF66Q9ASUAAJG", "x-amz-crc32": "2745614147"}, "RetryAttempts": 0}}}%  
+{"todo": {"ResponseMetadata": {"RequestId": "5VBGHJQ3REQ2T7QRNMO85MHST3VV4KQNSO5AEMVJF66Q9ASUAAJG", "HTTPStatusCode": 200, "HTTPHeaders": {"server": "Server", "date": "Sun, 02 Aug 2020 22:27:14 GMT", "content-type": "application/x-amz-json-1.0", "content-length": "2", "connection": "keep-alive", "x-amzn-requestid": "5VBGHJQ3REQ2T7QRNMO85MHST3VV4KQNSO5AEMVJF66Q9ASUAAJG", "x-amz-crc32": "2745614147"}, "RetryAttempts": 0}}}%
 ```

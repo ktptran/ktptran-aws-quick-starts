@@ -1,63 +1,59 @@
 # CloudFormation IAM S3 Viewing
+
 This quick start CloudFormation template provisions an IAM group with an optional policy attached to list all the S3 buckets in your environment.
 
 Depending on the input parameters, you may rename the group, user, and policy in addition to deciding whether or not a policy to list the S3 buckets is created and attached to the group.
 
 ![IAM-Picture](https://github.com/ktptran/ktptran-aws-quick-starts/blob/master/basic-iam/iam.png)
 
-
 ## Setup
+
 To provision any CloudFormation stack, you may configure it through the command line interface (CLI) or through the AWS console. For this quick start, we will provision the VPC through the CLI.
 
-First, ensure you have the [AWS CLI](https://aws.amazon.com/cli/) installed then use the command `aws configure` to provision your AWS credentials to your session. Then, navigate to your directory with the YAML file.  
-
+First, ensure you have the [AWS CLI](https://aws.amazon.com/cli/) installed then use the command `aws configure` to provision your AWS credentials to your session. Then, navigate to your directory with the YAML file.
 
 ## Commands and Deployment
+
 To update the configurations for the CloudFormation template, edit the `parameters.json` file.
 
-
-*Creating stack:*
+_Creating stack:_
 
 ```bash
 aws cloudformation create-stack --stack-name IAM --template-body file://iam-policy.yml --capabilities CAPABILITY_NAMED_IAM --parameters file://parameters.json
 ```
 
-*Waiting for the stack to complete:*
+_Waiting for the stack to complete:_
 
 ```bash
 aws cloudformation wait stack-create-complete --stack-name IAM
 ```
 
-
-*Describe information about your stack:*
+_Describe information about your stack:_
 
 ```bash
 aws cloudformation describe-stacks
 ```
 
-
-*Update Stack:*
+_Update Stack:_
 
 ```
 aws cloudformation update-stack --stack-name IAM --template-body file://iam-policy.yml --capabilities CAPABILITY_NAMED_IAM --parameters file://parameters.json
 ```
 
-
-*Waiting for the stack update to complete:*
+_Waiting for the stack update to complete:_
 
 ```bash
 aws cloudformation wait stack-update-complete --stack-name IAM
 ```
 
-
-*Deleting the stack:*
+_Deleting the stack:_
 
 ```bash
 aws cloudformation delete-stack --stack-name IAM
 ```
 
-
 ## Architecture
+
 This architecture provisions the following resources:
 
 _Policy_
